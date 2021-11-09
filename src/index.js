@@ -1,10 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import IntervalControl from './IntervalControl'
+import ShowStudentWidthPage from './components/ShowStudentWidthPage'
+import {fetchData} from './util/fetchData'
 
 
+fetchData().then(res => {
+    console.log(res)
+})
 
-ReactDOM.render(<IntervalControl /> , document.getElementById("root") )
+
+ReactDOM.render(<ShowStudentWidthPage /> , document.getElementById("root") )
 
 
 

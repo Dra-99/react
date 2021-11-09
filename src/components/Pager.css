@@ -1,0 +1,16 @@
+span{
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+span.disabled{
+    cursor: not-allowed;
+    color: #ccc;
+}
+
+span.active{
+    background-color:blue;
+    color: #fff;
+}
