@@ -1,17 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import fetchData from './fetchData/index'
-import StudentItem from './components/StudentItem'
-import StudentList from './components/StudentList'
+import BarList from './components/BarList'
 
-
-
-async function render() {
-  const result = await fetchData();
-  ReactDOM.render(<StudentList studentArr={result}/> ,document.getElementById("root"));
-}
-
-render()
+ReactDOM.render(<BarList left={50} top={50} bgcolor={"#008c8c"} speedX={100} speedY={100} /> , document.getElementById("root") )
 
 
 
