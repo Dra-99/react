@@ -1,15 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ShowStudentWidthPage from './components/ShowStudentWidthPage'
-import {fetchData} from './util/fetchData'
+import Test from './components/Test'
 
 
-fetchData().then(res => {
-    console.log(res)
-})
 
-
-ReactDOM.render(<ShowStudentWidthPage /> , document.getElementById("root") )
+ReactDOM.render(<Test /> , document.getElementById("root") )
 
 
 
