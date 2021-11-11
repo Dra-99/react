@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Form from './components/Form'
+import Test from './components/SelectGroup/Test'
 
 
 
-ReactDOM.render(<Form /> , document.getElementById("root") )
+ReactDOM.render(<Test /> , document.getElementById("root") )
 
 
 
