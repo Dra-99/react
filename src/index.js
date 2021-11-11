@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Test from './components/SelectGroup/Test'
+import Test from './components/RadioGroup/Test'
 
 
 

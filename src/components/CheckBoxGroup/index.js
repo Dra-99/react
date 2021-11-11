@@ -1,4 +1,6 @@
 import React from 'react'
+import commonValidate from '../../util/commonValidate';
+import PropTypes from 'prop-types'
 
 export default function CheckBoxGroup(props) {
 
@@ -10,7 +12,8 @@ export default function CheckBoxGroup(props) {
      *  {text: "篮球", value: "basketBall"},
      *  {text: "乒乓球", value: "pingpang"}
      * ]
-     */
+     * */
+
     let checkBox;
     function getCheckBox() {
         checkBox = props.datas.map(item => (<label key={item.value}>
@@ -40,4 +43,15 @@ export default function CheckBoxGroup(props) {
             {checkBox}
         </div>
     )
+}
+
+CheckBoxGroup.defaultProps = {
+    datas: [],
+    selected: []
+}
+
+CheckBoxGroup.propTypes = {
+    datas: commonValidate.datas.isRequired,
+    name: commonValidate.name,
+    selected: PropTypes.arrayOf(PropTypes.string)
 }

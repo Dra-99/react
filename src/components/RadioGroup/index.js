@@ -1,7 +1,19 @@
 import React, { Component } from 'react'
+import commonValidate from '../../util/commonValidate'
+import PropTypes from 'prop-types'
 
 export default class RadioGroup extends Component {
 
+    static defaultProps = {
+        datas: [],
+        selected: ""
+    }
+
+    static propTypes = {
+        datas: commonValidate.datas.isRequired,
+        selected: PropTypes.string,
+        name: commonValidate.name
+    }
 
     getRadioArr = () => {
         return this.props.datas.map(item => (<label key={item.value}>
