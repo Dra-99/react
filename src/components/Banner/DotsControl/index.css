@@ -1,0 +1,24 @@
+.dots{
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    background: rgba(255, 255, 255, .3);
+    padding: 5px 10px;
+    border-radius: 15px;
+}
+
+.dots span{
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .7);
+    display: block;
+    margin: 0 3px;
+    cursor: pointer;
+}
+
+.dots span.active{
+    background: orange;
+}
