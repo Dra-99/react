@@ -1,0 +1,8 @@
+.container{
+    border: 1px solid #ccc;
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
