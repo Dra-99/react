@@ -1,0 +1,9 @@
+.exit-active{
+    transform: translateX(100px);
+    transition: 1s;
+    opacity: 0;
+}
+
+.exit-done{
+    opacity: 0;
+}
