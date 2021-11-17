@@ -1,53 +1,46 @@
-import React, { Component } from 'react'
-import ErrorBound from './components/ErrorBound/index';
+import React, {useState} from 'react'
+import FadeTransition from './components/FadeTransition/index.js'
+import { SwitchTransition, TransitionGroup } from 'react-transition-group'
+import { v4 } from 'uuid'
 
-function CompA() {
+export default function App() {
+
+    const [show, setShow] = useState(true)
+
+    const [task, setTask] = useState([
+        {id: v4(), name: "任务1"},
+        {id: v4(), name: "任务2"}
+    ])
+
+    const [name, setName] = useState("");
+
     return (
-        <div style={{
-            width: "90%",
-            height: 400,
-            border: "1px solid #000"
-        }}>
-            <h1>组件A</h1>
-            <CompB />
+        <div>
+            {/* <SwitchTransition>
+                <FadeTransition appear key={show} timeout={2000}>
+                    <h1>这是一个淡入淡出</h1>
+                </FadeTransition>
+            </SwitchTransition>
+            <button onClick={() => setShow(!show)}>切换</button> */}
+            <TransitionGroup component="ul">
+                {task.map(item => <FadeTransition key={item.id} timeout={2000}>
+                    <li>
+                        {item.name}
+                        <button onClick={() => {
+                            setTask(task.filter(it => it.id !== item.id))
+                        }}>删除任务</button>
+                    </li>
+                </FadeTransition>)}
+            </TransitionGroup>
+            <input type="text" value={name} onChange={e => {
+                setName(e.target.value);
+            }} />
+            <button onClick={() => {
+                setTask([...task, {
+                    id: v4(),
+                    name,
+                }])
+            }}>添加任务</button>
         </div>
     )
-}
-
-function CompB() {
-    throw new Error("error")
-    return (
-        <div style={{
-            width: "50%",
-            height: 300,
-            border: "1px solid #000"
-        }}>
-            <h1>组件B</h1>
-        </div>
-    )
-}
-
-function CompC() {
-    return (
-        <div style={{
-            width: "90%",
-            height: 400,
-            border: "1px solid #000"
-        }}>
-            <h1>组件C</h1>
-        </div>
-    )
-}
-
-export default class App extends Component {
-    render() {
-        return (
-            <div>
-                <ErrorBound>
-                    <CompA />
-                </ErrorBound>
-                <CompC />
-            </div>
-        )
-    }
 }
