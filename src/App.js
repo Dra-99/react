@@ -1,46 +1,39 @@
-import React, {useState} from 'react'
-import FadeTransition from './components/FadeTransition/index.js'
-import { SwitchTransition, TransitionGroup } from 'react-transition-group'
-import { v4 } from 'uuid'
+import React from 'react'
+import { Route, NavLink, BrowserRouter as Router } from 'react-router-dom'
 
-export default function App() {
-
-    const [show, setShow] = useState(true)
-
-    const [task, setTask] = useState([
-        {id: v4(), name: "任务1"},
-        {id: v4(), name: "任务2"}
-    ])
-
-    const [name, setName] = useState("");
-
+function User(props) {
     return (
         <div>
-            {/* <SwitchTransition>
-                <FadeTransition appear key={show} timeout={2000}>
-                    <h1>这是一个淡入淡出</h1>
-                </FadeTransition>
-            </SwitchTransition>
-            <button onClick={() => setShow(!show)}>切换</button> */}
-            <TransitionGroup component="ul">
-                {task.map(item => <FadeTransition key={item.id} timeout={2000}>
-                    <li>
-                        {item.name}
-                        <button onClick={() => {
-                            setTask(task.filter(it => it.id !== item.id))
-                        }}>删除任务</button>
-                    </li>
-                </FadeTransition>)}
-            </TransitionGroup>
-            <input type="text" value={name} onChange={e => {
-                setName(e.target.value);
-            }} />
-            <button onClick={() => {
-                setTask([...task, {
-                    id: v4(),
-                    name,
-                }])
-            }}>添加任务</button>
+            <NavLink to={`${props.match.url}/set`}>用户设置</NavLink>
+            <NavLink to={`${props.match.url}/pay`}>用户支付</NavLink>
+            <div style={{
+            width: 400,
+            height: 400,
+            background: "#008c8c"
+            }}>
+                <Route path={`${props.match.url}/set`} component={UserSet}></Route>
+                <Route path={`${props.match.url}/pay`} component={UserPay}></Route>
+            </div>
         </div>
+    )
+}
+
+function UserSet() {
+    return (
+        <h1>用户设置</h1>
+    )
+}
+
+function UserPay() {
+    return (
+        <h1>用户支付</h1>
+    )
+}
+
+export default function App() {
+    return (
+        <Router>
+            <Route path="/user" component={User}></Route>
+        </Router>
     )
 }
