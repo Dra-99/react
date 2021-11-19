@@ -1,39 +1,25 @@
 import React from 'react'
-import { Route, NavLink, BrowserRouter as Router } from 'react-router-dom'
-
-function User(props) {
-    return (
-        <div>
-            <NavLink to={`${props.match.url}/set`}>用户设置</NavLink>
-            <NavLink to={`${props.match.url}/pay`}>用户支付</NavLink>
-            <div style={{
-            width: 400,
-            height: 400,
-            background: "#008c8c"
-            }}>
-                <Route path={`${props.match.url}/set`} component={UserSet}></Route>
-                <Route path={`${props.match.url}/pay`} component={UserPay}></Route>
-            </div>
-        </div>
-    )
-}
-
-function UserSet() {
-    return (
-        <h1>用户设置</h1>
-    )
-}
-
-function UserPay() {
-    return (
-        <h1>用户支付</h1>
-    )
-}
+import {Route, BrowserRouter as Router, Switch, NavLink} from 'react-router-dom'
+import Home from './Home'
+import Login from './Login'
+import Person from './Person'
+import ProtectPage from './ProtectPage'
 
 export default function App() {
     return (
-        <Router>
-            <Route path="/user" component={User}></Route>
-        </Router>
+        <div>
+            <Router>
+                <ul>
+                    <li><NavLink to="/">首页</NavLink></li>
+                    <li><NavLink to="/login">登录</NavLink></li>
+                    <li><NavLink to="/person">个人中心</NavLink></li>
+                </ul>
+                <Switch>
+                    <Route path="/" exact component={Home}></Route>
+                    <Route path="/login" component={Login}></Route>
+                    <ProtectPage path="/person" component={Person}></ProtectPage>
+                </Switch>
+            </Router> 
+        </div>
     )
 }
