@@ -1,10 +1,20 @@
-.container{
-    width: 600px;
+.page{
+    width: 400px;
     margin: 0 auto;
+    border: 1px solid #ccc;
 }
 
-.content{
-    position: relative;
-    height: 300px;
+a {
+    text-decoration: none;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
+a:first-child{
+    margin: 20px 0;
+}
+
+a.active{
+    color: orange;
+}

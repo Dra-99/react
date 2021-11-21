@@ -18,7 +18,7 @@ class ReouteGuardHelper extends Component {
             prevLocation = this.props.location;
             curLocation = location;
             oAction = action;
-            return "阻塞发生了"
+            return ""
         })
     }
     componentWillUnmount() {
