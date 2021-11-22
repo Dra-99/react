@@ -1,26 +1,14 @@
-import {createStore, bindActionCreators} from "redux"
-import * as numberAction from './action/number-action'
-import * as getAction from './action/getAction'
+import reducer from './reducer'
+import {createStore} from "redux"
+import * as userAction from './action/usersAction'
+import { v4 } from 'uuid';
 
-// 创建reducer函数，来处理仓库数据
-function reducer(state, action) {
-    if(action.type === numberAction.INCREASE) {
-        return state + 1;
-    }else if(action.type === numberAction.DECREASE) {
-        return state - 1;
-    }else if(action.type === numberAction.SET) {
-        return action.payload;
-    }else {
-        return state;
-    }
-}
 
-// 创建仓库
-const store = createStore(reducer, 10);
-
+const store = createStore(reducer);
 console.log(store.getState());
-
-const actionCreator = bindActionCreators(getAction, store.dispatch);
-actionCreator.getIncreaseAction();
-
+store.dispatch(userAction.createAddUserActio({
+    id: v4(),
+    name: "贾乐",
+    age: 100
+}))
 console.log(store.getState());
