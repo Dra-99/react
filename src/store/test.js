@@ -1,9 +1,23 @@
 import store from "./index";
-import {createConditionAction} from './action/student/searchCondition'
-import {fetchDatas} from './action/student/searchResult'
+import {createFetchData} from './action/student/searchResult'
+import {createDecreaseAction, createIncreaseAction, createAutoIncreaseAction, createCancelAutoIncreaseAction} from './action/counter'
 
-store.dispatch(createConditionAction({
-    limit: 20
-}))
+window.increase = () => {
+    store.dispatch(createIncreaseAction())
+}
 
-store.dispatch(fetchDatas());
+window.decrease = () => {
+    store.dispatch(createDecreaseAction());
+}
+
+window.fetchData = () => {
+    store.dispatch(createFetchData())
+}
+
+window.autoIncrease = () => {
+    store.dispatch(createAutoIncreaseAction());
+}
+
+window.cancelIncrease = () => {
+    store.dispatch(createCancelAutoIncreaseAction());
+}

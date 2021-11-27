@@ -1,8 +1,7 @@
-import {searchStudent} from '../../../service/getStudent'
-
 export const actionTypes = {
     SETSTUDENTTOTALANDDATAS: Symbol("set-student-total-and-datas"),
-    SETLOADING: Symbol("set-loading")
+    SETLOADING: Symbol("set-loading"),
+    FETCHDATA: Symbol("fetch-data")
 } 
 
 export function createStudentTotalAndDatas(datas, total) {
@@ -22,12 +21,9 @@ export function createSetLoading(isLoading) {
     }
 }
 
-export function fetchDatas() {
-    return async function(dispatch, getState) {
-        dispatch(createSetLoading(true));
-        const condition = getState().student.searchCondition;
-        const resp = await searchStudent(condition);
-        dispatch(createStudentTotalAndDatas(resp.datas, resp.cont));
-        dispatch(createSetLoading(false));
+
+export function createFetchData() {
+    return {
+        type: actionTypes.FETCHDATA
     }
 }
