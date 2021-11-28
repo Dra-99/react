@@ -1,29 +1,29 @@
-export const actionTypes = {
-    SETSTUDENTTOTALANDDATAS: Symbol("set-student-total-and-datas"),
-    SETLOADING: Symbol("set-loading"),
-    FETCHDATA: Symbol("fetch-data")
-} 
+import {  createActions, handleActions } from "redux-actions"
 
-export function createStudentTotalAndDatas(datas, total) {
-    return {
-        type: actionTypes.SETSTUDENTTOTALANDDATAS,
-        payload: {
-            total,
-            datas
-        }
-    }
-}
+const actions = createActions({
+    SET_STUDENT_TOTAL_AND_DATAS: (datas, total) => ({
+        total,
+        datas
+    }),
+    SET_LOADING: isLoading => isLoading,
+    FETCH_DATA: null
+})
 
-export function createSetLoading(isLoading) {
-    return {
-        type: actionTypes.SETLOADING,
-        payload: isLoading
-    }
-}
+export const {setStudentTotalAndDatas, setLoading, fetchData} = actions;
+
+export default handleActions({
+    [setStudentTotalAndDatas]: (state, {payload}) => ({
+        ...state,
+        ...payload
+    }),
+    [setLoading]: (state, {payload}) => ({
+        ...state,
+        isLoading: payload
+    })
+}, {
+    total: 0,
+    datas: [],
+    isLoading: false
+})
 
 
-export function createFetchData() {
-    return {
-        type: actionTypes.FETCHDATA
-    }
-}

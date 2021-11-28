@@ -1,10 +1,20 @@
-export const actionTypes = {
-    CHANGE: Symbol("change")
-};
+import { createActions, handleActions } from "redux-actions";
 
-export function createConditionAction(newCondition) {
-    return {
-        type: actionTypes.CHANGE,
-        payload: newCondition
-    }
-}
+const actions = createActions({
+    CHANGE: newCondition => newCondition
+})
+
+export const {change} = actions;
+
+export default handleActions({
+    [change]: (state, {payload}) => ({
+        ...state,
+        ...payload
+    })
+}, {
+   key: "",
+   page: 1,
+   limit: 10,
+   sex: -1 
+})
+

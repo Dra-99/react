@@ -1,23 +1,23 @@
 import store from "./index";
-import {createFetchData} from './action/student/searchResult'
-import {createDecreaseAction, createIncreaseAction, createAutoIncreaseAction, createCancelAutoIncreaseAction} from './action/counter'
+import {fetchData} from './action/student/searchResult'
+import {decrease, increase, autoIncrease, cancelAutoIncrease} from './action/counter'
 
 window.increase = () => {
-    store.dispatch(createIncreaseAction())
+    store.dispatch(increase())
 }
 
 window.decrease = () => {
-    store.dispatch(createDecreaseAction());
+    store.dispatch(decrease());
 }
 
 window.fetchData = () => {
-    store.dispatch(createFetchData())
+    store.dispatch(fetchData())
 }
 
 window.autoIncrease = () => {
-    store.dispatch(createAutoIncreaseAction());
+    store.dispatch(autoIncrease());
 }
 
 window.cancelIncrease = () => {
-    store.dispatch(createCancelAutoIncreaseAction());
+    store.dispatch(cancelAutoIncrease());
 }
