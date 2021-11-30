@@ -16,7 +16,7 @@ function Parent() {
 	const [text, setText] = useState(123)
 	const [n, setN] = useState(0)
 	const handleClick = useCallback(() => {
-			setText(123)
+			setText(Math.random())
 	},[])
 	return (
 		<div>

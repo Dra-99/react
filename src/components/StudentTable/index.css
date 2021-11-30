@@ -1,0 +1,10 @@
+.tb{
+    margin-top: 40px;
+    text-align: center;
+    border-collapse: collapse;
+    width: 100%;
+}
+.tb th, td{
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+}

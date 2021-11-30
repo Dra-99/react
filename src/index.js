@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Test from './components/RadioGroup/Test'
+import App from './App'
+import "./store/test"
 
 
 
-ReactDOM.render(<Test /> , document.getElementById("root") )
+ReactDOM.render(<App /> , document.getElementById("root") )
 
 
 

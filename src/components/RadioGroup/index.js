@@ -1,39 +1,31 @@
 import React, { Component } from 'react'
 import commonValidate from '../../util/commonValidate'
 import PropTypes from 'prop-types'
+import withInputGroup from '../HOC/withInputGroup'
 
-export default class RadioGroup extends Component {
 
-    static defaultProps = {
-        datas: [],
-        selected: ""
-    }
-
+class RadioGroup extends Component {
     static propTypes = {
-        datas: commonValidate.datas.isRequired,
+        info: commonValidate.singleData.isRequired,
         selected: PropTypes.string,
-        name: commonValidate.name
+        name: commonValidate.name,
+        onChange: PropTypes.func
     }
 
-    getRadioArr = () => {
-        return this.props.datas.map(item => (<label key={item.value}>
-            <input name={this.props.name} type="radio" 
-                value={item.value} 
-                onChange={this.handleChange}
-                checked={item.value === this.props.selected}/>
-                    {item.text}
-        </label>))
-    }
-    
     handleChange = (e) => {
         this.props.onChange && this.props.onChange(e.target.value, this.props.name, e);
     }
+
     render() {
-        const radioArr = this.getRadioArr();
         return (
-            <div>
-                {radioArr}
-            </div>
-        )
+        <label>
+            <input name={this.props.name} type="radio" 
+                value={this.props.info.value} 
+                onChange={this.handleChange}
+                checked={this.props.selected === this.props.info.value}/>
+                    {this.props.info.text}
+        </label>)
     }
 }
+
+export default withInputGroup(RadioGroup)

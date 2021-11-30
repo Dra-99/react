@@ -1,57 +1,41 @@
 import React from 'react'
 import commonValidate from '../../util/commonValidate';
 import PropTypes from 'prop-types'
+import withInputGroup from '../HOC/withInputGroup';
+import { Component } from 'react'
 
-export default function CheckBoxGroup(props) {
+class CheckBoxGroup extends Component {
 
-    /**
-     * 传递过来的props中用来展示多选的数据应该是一个数组
-     * 还应该有一个事件，我们需要在组件里来触发它
-     * [
-     *  {text: "足球", value: "footBall"},
-     *  {text: "篮球", value: "basketBall"},
-     *  {text: "乒乓球", value: "pingpang"}
-     * ]
-     * */
-
-    let checkBox;
-    function getCheckBox() {
-        checkBox = props.datas.map(item => (<label key={item.value}>
-            <input type="checkbox" 
-                value={item.value} 
-                checked={props.selected.includes(item.value)}
-                onChange={handleChange}
-                name={props.name} />
-                {item.text}
-        </label>))
+    static propTypes = {
+       info: commonValidate.singleData.isRequired,
+       name: commonValidate.name,
+       onChange: PropTypes.func.isRequired,
+       selected: PropTypes.arrayOf(PropTypes.string)
     }
 
-    function handleChange(e) {
+    handleChange = (e) => {
         let newArr;
         if(e.target.checked) {
-            newArr = [...props.selected, e.target.value];
+            newArr = [...this.props.selected, e.target.value];
         }else {
-            newArr = props.selected.filter(item => item !== e.target.value)
+            newArr = this.props.selected.filter(item => item !== e.target.value)
         }
-        props.onChange && props.onChange(newArr, props.name, e);
+        this.props.onChange && this.props.onChange(newArr, this.props.name, e);
     }
 
-    getCheckBox();
-
-    return (
-        <div>
-            {checkBox}
-        </div>
-    )
+    render() {
+        return (
+            (<label>
+                <input type="checkbox" 
+                    value={this.props.info.value} 
+                    checked={this.props.selected.includes(this.props.info.value)}
+                    onChange={this.handleChange}
+                    name={this.props.name} />
+                    {this.props.info.text}
+            </label>)
+        )
+    }
 }
 
-CheckBoxGroup.defaultProps = {
-    datas: [],
-    selected: []
-}
+export default withInputGroup(CheckBoxGroup);
 
-CheckBoxGroup.propTypes = {
-    datas: commonValidate.datas.isRequired,
-    name: commonValidate.name,
-    selected: PropTypes.arrayOf(PropTypes.string)
-}

@@ -7,5 +7,9 @@ export default {
         text: PropTypes.string.isRequired,
         value: PropTypes.string.isRequired
     })),
-    name: PropTypes.string
+    name: PropTypes.string,
+    singleData: PropTypes.shape({
+        text: PropTypes.string.isRequired,
+        value: PropTypes.string.isRequired
+    })
 }

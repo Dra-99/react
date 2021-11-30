@@ -24,7 +24,7 @@ export default function Pager(props) {
     }
 
     return (
-        <>
+        <div className="pager">
             <span className={props.current === 1 ? "disabled" : ""} onClick={() => {
                 changePage(1, props)
             }}>首页</span>      
@@ -39,7 +39,7 @@ export default function Pager(props) {
                 changePage(pageTotal, props)
             }}>尾页</span>
             {props.current} / {pageTotal}
-        </>
+        </div>
     )
 }
 
@@ -49,7 +49,7 @@ function getPageTotal(props) {
 
 function getMinPage(props) {
     let result = props.current - Math.floor(props.pageSize / 2);
-    if(result < 0) {
+    if(result <= 0) {
         result = 1;
     }
     return result;

@@ -1,33 +1,36 @@
 import React, { Component } from 'react'
 import commonValidate from '../../util/commonValidate'
 import PropTypes from 'prop-types'
+import withInputGroup from '../HOC/withInputGroup'
 
-export default class SelectGroup extends Component {
-
-    static defaultProps = {
-        datas: [],
-        selected: ""
-    }
-
+class Option extends Component {
     static propTypes = {
-        datas: commonValidate.datas.isRequired,
-        selected: PropTypes.string,
-        name: commonValidate.name
+        info: commonValidate.singleData.isRequired,
     }
 
-    getSelectArr = () => {
-        return this.props.datas.map(item => (<option key={item.value} value={item.value}>{item.text}</option>))
-    }
-    
-    handleChange = (e) => {
-        this.props.onChange && this.props.onChange(e.target.value, this.props.name, e);
-    }
     render() {
-        const selectArr = this.getSelectArr();
-        return (
-            <select name={this.props.name} value={this.props.selected} onChange={this.handleChange}>
-                {selectArr}
-            </select>
-        )
+        return (<option value={this.props.info.value}>{this.props.info.text}</option>)
     }
 }
+
+const OptionGroup = withInputGroup(Option);
+
+class Select extends Component {
+    static propTypes = {
+        name: commonValidate.name,
+        selected: PropTypes.string,
+        onchange: PropTypes.func
+    }
+
+    handleChange = (e) => {
+        this.props.onChange && this.props.onChange(e.target.value, this.props.name, e)
+    }
+
+    render() {
+        return <select name={this.props.name} value={this.props.selected} onChange={this.handleChange}>
+            <OptionGroup {...this.props}/>
+        </select>
+    }
+}
+
+export default Select;
