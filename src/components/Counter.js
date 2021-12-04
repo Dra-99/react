@@ -1,5 +1,6 @@
 import {connect} from "dva"
 import {useRef} from "react"
+import Modal from './Modal'
 
 function Counter(props) {
     const inp = useRef();
@@ -15,13 +16,15 @@ function Counter(props) {
             }}>add</button>
             <button onClick={props.onAsyncIncrease}>asyncIncrease</button>
             <button onClick={props.onAsyncDecrease}>asyncDecrease</button>
+            {props.isLoading && <Modal>加载中...</Modal>}
         </>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-        counter: state.counter
+        counter: state.counter,
+        isLoading: state.loading.models.counter
     }
 }
 
