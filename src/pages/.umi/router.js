@@ -14,47 +14,23 @@ let routes = [
       {
         "path": "/",
         "exact": true,
-        "component": require('../index.js').default
+        "component": require('../index.js').default,
+        "title": "首页",
+        "Routes": [require('../../routes/showTitle.js').default]
       },
       {
-        "path": "/404",
+        "path": "/login",
         "exact": true,
-        "component": require('../404.js').default
+        "component": require('../login.js').default,
+        "title": "登录页",
+        "Routes": [require('../../routes/showTitle.js').default]
       },
       {
-        "path": "/page1",
+        "path": "/welcome",
         "exact": true,
-        "component": require('../page1.js').default
-      },
-      {
-        "path": "/page2",
-        "exact": true,
-        "component": require('../page2.js').default
-      },
-      {
-        "path": "/sub",
-        "exact": false,
-        "component": require('../sub/_layout.js').default,
-        "routes": [
-          {
-            "path": "/sub/page1",
-            "exact": true,
-            "component": require('../sub/page1.js').default
-          },
-          {
-            "path": "/sub/page2",
-            "exact": true,
-            "component": require('../sub/page2.js').default
-          },
-          {
-            "path": "/sub/:id",
-            "exact": true,
-            "component": require('../sub/$id.js').default
-          },
-          {
-            "component": () => React.createElement(require('C:/Users/Administrator/AppData/Local/Yarn/Data/global/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: false })
-          }
-        ]
+        "component": require('../welcome.js').default,
+        "title": "欢迎页",
+        "Routes": [require('../../routes/privateRoute.js').default, require('../../routes/showTitle.js').default]
       },
       {
         "component": () => React.createElement(require('C:/Users/Administrator/AppData/Local/Yarn/Data/global/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: false })

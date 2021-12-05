@@ -1,3 +1,8 @@
+/**
+ * title: 首页
+ * Routes: 
+ *      - ./src/routes/showTitle.js
+ */
 import React from 'react'
 
 export default function index() {

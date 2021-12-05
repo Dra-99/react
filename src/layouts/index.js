@@ -1,12 +1,18 @@
 import React from 'react'
+import NavLink from "umi/navlink"
+import "./index.css"
 
 export default function index(props) {
     return (
         <div>
-            <h1>这是通用布局头部</h1>
-            {props.children}
-            <h1>这是通用布局底部</h1>
-        </div>   
-    )  
+            <div>
+                <NavLink to="/">首页</NavLink>
+                <NavLink to="/welcome">欢迎页</NavLink>
+                <NavLink to="/login">登录</NavLink>
+            </div>
+            <div>
+                {props.children}  
+            </div>
+        </div>
+    )
 }
- 
