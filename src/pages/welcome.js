@@ -2,7 +2,6 @@
  * title: 欢迎页
  * Routes: 
  *      - ./src/routes/privateRoute.js
- *      - ./src/routes/showTitle.js
  */
 import React from 'react'
 
