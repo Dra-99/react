@@ -61,11 +61,11 @@ export default {
                 if(state.pathname !== "/student") {
                     return;
                 }
-                state.query.page = state.query.page && +state.query.page;
-                state.query.limit = state.query.limit && +state.query.limit;
-                state.query.sex = state.query.sex && +state.query.sex;
+                state.query.page = state.query.page ? +state.query.page : 1;
+                state.query.limit = state.query.limit ? +state.query.limit : 10;
+                state.query.sex = state.query.sex ? +state.query.sex : -1;
 
-
+                console.log(state.query)
                 dispatch({
                     type: "changeCondition",
                     payload: state.query
