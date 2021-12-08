@@ -4,8 +4,14 @@ export default {
             title: true,
             dva: true,
             routes: {
-            exclude: [/.*\/models\/.*/, /.*\/model\.js/]
+                exclude: [/.*\/models\/.*/, /.*\/model\.js/]
             }
         }]
-    ]
+    ],
+    proxy: {
+        "/api": {
+            target: "http://api.duyiedu.com/",
+            changeOrigin: true
+        }
+    }
 } 

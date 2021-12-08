@@ -1,14 +1,14 @@
 /**
- * title: 首页
- * Routes:
+ * title: 修改学生
+ * Routes: 
  *      - src/routes/privateRouter.js
  */
 import React from 'react'
 
-export default function index() {
+export default function $id() {
     return (
         <div>
-            <h1>首页</h1>
+            <h1>修改学生</h1>
         </div>
     )
 }

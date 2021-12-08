@@ -1,0 +1,19 @@
+.item{
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.disabled{
+    cursor: not-allowed;
+    color: #ccc;
+}
+
+.active{
+    background-color:blue;
+    color: #fff;
+} 
+.container{
+    margin-top: 20px;
+}

@@ -20,8 +20,8 @@ export function _onCreate() {
     app.use(plugin);
   });
   
-  app.model({ namespace: 'counter', ...(require('C:/Users/Administrator/Desktop/react-n/umi-js/src/models/counter.js').default) });
-app.model({ namespace: 'students', ...(require('C:/Users/Administrator/Desktop/react-n/umi-js/src/models/students.js').default) });
+  app.model({ namespace: 'searchStudent', ...(require('C:/Users/Administrator/Desktop/react-n/umi-js/src/models/searchStudent.js').default) });
+app.model({ namespace: 'userLogin', ...(require('C:/Users/Administrator/Desktop/react-n/umi-js/src/models/userLogin.js').default) });
   return app;
 }
 

@@ -1,0 +1,19 @@
+.list{
+    margin-top: 40px;
+}
+.list li{
+    padding: 10px 40px;
+    font-size: 1.2em;
+    color: #fff;
+}
+.list li:hover{
+    background-color: #fff;
+}
+.list li:hover a{
+    color: #000;
+    font-weight: bold;
+}
+.active{
+    font-weight: bold;
+    color: #008c8c;
+}

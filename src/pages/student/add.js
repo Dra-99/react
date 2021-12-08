@@ -1,14 +1,14 @@
 /**
- * title: 首页
- * Routes:
+ * title: 添加学生
+ * Routes: 
  *      - src/routes/privateRouter.js
  */
 import React from 'react'
 
-export default function index() {
+export default function add() {
     return (
         <div>
-            <h1>首页</h1>
+            <h1>添加学生</h1>
         </div>
     )
 }

@@ -1,0 +1,16 @@
+.container{
+    display: flex;
+    align-items: center;
+    color: #fff;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+.username{
+    margin: 0 20px;
+}
+.btn{
+    cursor: pointer;
+}
+.title{
+    margin: 0;
+}

@@ -1,19 +1,16 @@
 import React from 'react'
-import NavLink from "umi/navlink"
-import "./index.css"
+import Layout from "../components/Layout"
+import HeaderContainer from "../components/Containers/HeaderContainer"
+import Menu from "../components/Menu"
 
 export default function index(props) {
-    return (
-        <div>
-            <div>
-                <NavLink to="/">首页</NavLink>
-                <NavLink to="/welcome">欢迎页</NavLink>
-                <NavLink to="/login">登录</NavLink>
-                <NavLink to="/counter">计数器</NavLink>
-            </div>
-            <div>
-                {props.children}  
-            </div>
-        </div>
-    )
+    if(props.location.pathname === "/login") {
+        return props.children
+    }else {
+        return <Layout
+            header={<HeaderContainer />}
+            left={<Menu />}
+            right={props.children}
+        />
+    }
 }
